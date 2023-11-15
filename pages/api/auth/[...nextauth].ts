@@ -4,6 +4,7 @@ import NextAuth from 'next-auth/next'
 import prisma from '../../../libs/prismaDB'
 import Credentials from 'next-auth/providers/credentials'
 import { compare } from 'bcrypt'
+import GoogleProvider from 'next-auth/providers/google';
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -11,10 +12,10 @@ export const authOptions: AuthOptions = {
     //   clientId: process.env.GITHUB_ID || '',
     //   clientSecret: process.env.GITHUB_SECRET || ''
     // }),
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_CLIENT_ID || '',
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
-    // }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID || '',
+      clientSecret: process.env.GOOGLE_SECRET || ''
+    }),
     Credentials({
       id: 'credentials',
       name: 'Credentials',
